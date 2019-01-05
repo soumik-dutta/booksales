@@ -1,3 +1,5 @@
+package com.primaseller;
+
 import csv.BookCsvReader;
 import csv.SalesCsvReader;
 import utils.DataUtils;
