@@ -50,20 +50,22 @@ public class SalesCsvReader {
                 String email = dataArray[1];
                 Integer quantityPurchased = dataArray[3] != null || dataArray[3] != "" ? Integer.parseInt(dataArray[3]) : null;
                 // topSellingBooks
-                Integer totalPurchases = 0;
+                Float totalPurchases = 0F;
                 Map<String, Integer> bookList = new HashMap<String, Integer>();
                 if (quantityPurchased > 0) {
                     for (int i = 4; i < quantityPurchased + 4; i++) {
                         String[] items = dataArray[i].split(";");
                         Integer itemCount = Integer.parseInt(items[1]);
-                        totalPurchases += itemCount;
                         //add bookid
                         bookList.put(items[0], itemCount);
+                        Float pricePerItem = itemCount * DataUtils.books.get(items[0]).getPrice();
+                        totalPurchases += pricePerItem;
                         if (DataUtils.topSellingBooks.get(items[0]) != null) {
+
                             //if already present then update the count otherwise put a new entry
-                            DataUtils.topSellingBooks.put(items[0], itemCount + DataUtils.topSellingBooks.get(items[0]));
+                            DataUtils.topSellingBooks.put(items[0], pricePerItem + DataUtils.topSellingBooks.get(items[0]));
                         } else {
-                            DataUtils.topSellingBooks.put(items[0], itemCount);
+                            DataUtils.topSellingBooks.put(items[0], pricePerItem);
                         }
                     }
                 }

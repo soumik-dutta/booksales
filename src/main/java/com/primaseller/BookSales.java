@@ -57,7 +57,7 @@ public class BookSales {
         // top selling books calculation
         if (map.get("--top_selling_books") != null) {
             Integer countTopBooks = Integer.parseInt(map.get("--top_selling_books"));
-            HashMap<String, Integer> sortedTopSellingBooks = DataUtils.sortByValue(DataUtils.topSellingBooks);
+            HashMap<String, Float> sortedTopSellingBooks = DataUtils.sortByValue(DataUtils.topSellingBooks);
             int i = 1;
             System.out.print("top_selling_books \t");
             for (String bookid : sortedTopSellingBooks.keySet()) {
@@ -70,7 +70,7 @@ public class BookSales {
         // top_customers
         if (map.get("--top_customers") != null) {
             Integer countTopCoustomer = Integer.parseInt(map.get("--top_customers"));
-            HashMap<String, Integer> sortedTopCustomer = DataUtils.sortByValue(DataUtils.topCustomers);
+            HashMap<String, Float> sortedTopCustomer = DataUtils.sortByValue(DataUtils.topCustomers);
             int i = 1;
             System.out.println();
             System.out.print("top_customers \t");

@@ -6,9 +6,9 @@ import java.util.*;
 
 public class DataUtils {
     // storing the data of the top selling books bookid->count
-    public static HashMap<String, Integer> topSellingBooks = new HashMap<String, Integer>();
+    public static HashMap<String, Float> topSellingBooks = new HashMap<String, Float>();
     // storing the data of the top customer emailid->count
-    public static HashMap<String, Integer> topCustomers = new HashMap<String, Integer>();
+    public static HashMap<String, Float> topCustomers = new HashMap<String, Float>();
     // storing the total sales by date date->amount
     public static HashMap<String, Float> salesByDate = new HashMap<String, Float>();
     // book data red-black tree for fast retrieval
@@ -20,20 +20,20 @@ public class DataUtils {
      * @param hm hash map to be sorted
      * @return
      */
-    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
+    public static HashMap<String, Float> sortByValue(HashMap<String, Float> hm) {
         // Create a list from elements of HashMap
-        List<Map.Entry<String, Integer>> list =
-                new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
+        List<Map.Entry<String, Float>> list =
+                new LinkedList<Map.Entry<String, Float>>(hm.entrySet());
         // Sort the list in reverse order
-        Collections.sort(list, Collections.<Map.Entry<String, Integer>>reverseOrder(new Comparator<Map.Entry<String, Integer>>() {
-            public int compare(Map.Entry<String, Integer> o1,
-                               Map.Entry<String, Integer> o2) {
+        Collections.sort(list, Collections.<Map.Entry<String, Float>>reverseOrder(new Comparator<Map.Entry<String, Float>>() {
+            public int compare(Map.Entry<String, Float> o1,
+                               Map.Entry<String, Float> o2) {
                 return (o1.getValue()).compareTo(o2.getValue());
             }
         }));
         // put data from sorted list to hashmap
-        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
-        for (Map.Entry<String, Integer> aa : list) {
+        HashMap<String, Float> temp = new LinkedHashMap<String, Float>();
+        for (Map.Entry<String, Float> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
         return temp;
